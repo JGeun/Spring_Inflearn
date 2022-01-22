@@ -41,18 +41,11 @@ public class JpaMain {
             member3.setTeam(teamB);
             em.persist(member3);
 
-            em.flush();
-            em.clear();
+            //FLUSH 자동 호출
+            int resultCount = em.createQuery("update Member m set m.age = 20")
+                    .executeUpdate();
 
-            String query = "select distinct t from Team t join fetch t.members";
-
-            List<Team> result = em.createQuery(query, Team.class).getResultList();
-            for (Team team : result) {
-                System.out.println("team = " + team.getName() + "|" + team.getMembers().size());
-                for(Member member : team.getMembers()){
-                    System.out.println("-> member = " + member);
-                }
-            }
+            System.out.println("resultCount = " + resultCount);
 
             tx.commit();
         } catch (Exception e) {
