@@ -11,16 +11,18 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 @Transactional(readOnly = true)
+@RequiredArgsConstructor
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    //회원 가입
+    /**
+     *     회원 가입
+     */
     @Transactional
     public Long join(Member member){
-        validateDuplicateMember(member); //중복 회원 검증
+        validateDuplicateMember(member);
         memberRepository.save(member);
         return member.getId();
     }
@@ -41,5 +43,10 @@ public class MemberService {
 
     public Member findOne(Long memberId){
         return memberRepository.findOne(memberId);
+    }
+
+    public void update(Long id, String name) {
+        Member member = memberRepository.findOne(id);
+        member.setName(name);
     }
 }
