@@ -65,3 +65,9 @@ PORT
 DNS  
 <sub> 도메인 네임 시스템(Domain Name System)  
 &nbsp;&nbsp;&nbsp;<sub>도메인 명을 IP주소로 변환
+
+<br/>
+
+#### [URI와 웹 브라우저 요청 흐름]
+##### URI(Uniform Resource Identifier)
+<sub>"URI는 URL-로케이터(locator), URN-이름(name) 또는 둘 다 추가로 분류될 수 있다."
